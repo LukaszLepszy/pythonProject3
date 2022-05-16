@@ -2,7 +2,7 @@ import pytest as pytest
 
 from page_object_pattern.get_api import Getapi
 
-
+@pytest.mark.webtest
 class Testgetapi(Getapi):
 
     get_api_key_list = ["users?page=2", "users/2", "unknow", "unknow/2", "users?delay=3"]
