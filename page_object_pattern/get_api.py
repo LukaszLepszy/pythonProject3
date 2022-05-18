@@ -67,6 +67,15 @@ class Getapi:
         status = post.status_code
         return status
 
+    def put_request(self, properly_url, data):
+        r = requests.put(properly_url, data)
+        return r.json
+
+    def put_status(self, properly_url, data):
+        r = requests.put(properly_url, data)
+        status = r.status_code
+        return status
+
     def loads(self):
         url = "https://reqres.in/api/users/2"
         r = requests.get(url)
