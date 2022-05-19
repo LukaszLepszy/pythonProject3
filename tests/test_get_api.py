@@ -1,5 +1,5 @@
 import pytest as pytest
-
+from unittest.mock import patch
 from page_object_pattern.http_methods import Httpmethods
 
 
@@ -22,6 +22,12 @@ class Testgetapi(Httpmethods):
         Obj = Httpmethods()
         actual_keys = Obj.get_keys_from_dict(Obj.get_response_data(Obj.get_properly_url(api_key)))
         assert actual_keys == self.expected_keys_users
+
+    # @patch('get_keys_from_dict')
+    # def test_get_mocking_keys(self, get_keys_from_dict_mock):
+    #     get_keys_from_dict_mock.return_value = ['id', 'email', 'first_name', 'last_name', 'avatar']
+    #     assert get_keys_from_dict_mock == ['id', 'email', 'first_name', 'last_name', 'avatar']
+
 
     def test_get_list_users_keys(self, api_key=name["List users"]):
         Obj = Httpmethods()
@@ -50,4 +56,5 @@ class Testgetapi(Httpmethods):
         Obj = Httpmethods()
         actual_status = Obj.get_status(Obj.get_properly_url(api_key))
         assert actual_status == 404
+
 
