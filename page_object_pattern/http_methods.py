@@ -5,19 +5,7 @@ import pytest
 import requests
 
 
-class Getapi:
-
-    post_request_data = {"name": "morpheus", "job": "leader"}
-
-    def api_test(self, api_key):
-        BASE_URL = "https://reqres.in/api"
-        API = BASE_URL + f"/{api_key}"
-        url = API
-        resp = requests.get(url)
-        status = resp.status_code
-        x = resp.json()
-        data = x['data']
-        return data
+class Httpmethods:
 
     def get_properly_url(self, api_key):
         properly_url = "https://reqres.in/api" + f"/{api_key}"
@@ -76,26 +64,5 @@ class Getapi:
         status = r.status_code
         return status
 
-    def loads(self):
-        url = "https://reqres.in/api/users/2"
-        r = requests.get(url)
-        y = r.json()
-        z = y["data"]["id"]
-        x = json.loads(r.text)
-        return z
 
-    def loadss(self):
-        url = "https://reqres.in/api/users/2"
-        r = requests.get(url)
-        x = json.loads(r.text)
-        pages = jsonpath.jsonpath(x, "data")
-        return pages
-
-
-# API = Getapi()
-# print(API.post_request(API.get_properly_url("users"), post_request_data))
-# # print(type(API.loadss()))
-#
-#
-# # print(API.get_keys(API.get_response_data(API.get_properly_url('users/2'))))
 
