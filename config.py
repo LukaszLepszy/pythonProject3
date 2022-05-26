@@ -12,4 +12,7 @@ register_successful = "register"
 register_unsuccessful = "register"
 login_successful = "login"
 login_unsuccessful = "login"
+#PUT AND PATCH
+update = "users/2"
+patch = "users/2"
 

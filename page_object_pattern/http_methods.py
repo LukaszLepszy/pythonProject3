@@ -15,6 +15,7 @@ class HTTPBaseMethods:
 
 class Httpmethods(HTTPBaseMethods):
 
+    """GET METHODS"""
     def get_status(self, api_key):
         properly_url = self.get_properly_url(api_key=api_key)
         resp = requests.get(properly_url)
@@ -50,13 +51,15 @@ class Httpmethods(HTTPBaseMethods):
                 list_keys.append(z)
             return list_keys
 
+    """DELETE METHODS"""
     def delete_record(self, api_key):
         properly_url = self.get_properly_url(api_key=api_key)
         r = requests.delete(properly_url)
         status = r.status_code
         return status
 
-    def post_request(self, api_key, data):
+    """POST METHODS"""
+    def post_response(self, api_key, data):
         properly_url = self.get_properly_url(api_key=api_key)
         post = requests.post(properly_url, data)
         return post.json()
@@ -67,10 +70,25 @@ class Httpmethods(HTTPBaseMethods):
         status = post.status_code
         return status
 
-    def put_request(self, api_key, data):
+    def post_respones_keys_from_dict(self, api_key, post_data):
+        data = self.post_response(api_key=api_key, data=post_data)
+        list_keys = []
+        for k, v in data.items():
+            list_keys.append(k)
+        return list_keys
+
+    def post_respones_values_from_dict(self, api_key, post_data):
+        data = self.post_response(api_key=api_key, data=post_data)
+        list_values = []
+        for k, v in data.items():
+            list_values.append(v)
+        return list_values
+
+    """PUT METHODS"""
+    def put_response(self, api_key, data):
         properly_url = self.get_properly_url(api_key=api_key)
         r = requests.put(properly_url, data)
-        return r.json
+        return r.json()
 
     def put_status(self, api_key, data):
         properly_url = self.get_properly_url(api_key=api_key)
@@ -78,5 +96,31 @@ class Httpmethods(HTTPBaseMethods):
         status = r.status_code
         return status
 
+    # """PATCH METHODS"""
+    def patch_response(self, api_key, data):
+        properly_url = self.get_properly_url(api_key=api_key)
+        r = requests.patch(properly_url, data)
+        return r.json()
 
+    def patch_responses_key_from_dict(self, api_key, patch_data):
+        data = self.patch_response(api_key=api_key, data=patch_data)
+        list_keys = []
+        for k, v in data.items():
+            list_keys.append(k)
+        return list_keys
 
+    def patch_respones_values_from_dict(self, api_key, patch_data):
+        data = self.post_response(api_key=api_key, data=patch_data)
+        list_values = []
+        for k, v in data.items():
+            list_values.append(v)
+        return list_values
+
+#     def xx(self):
+#         data = {"name": "morpheus", "job": "zion resident"}
+#         properly_url = "https://reqres.in/api/users/2"
+#         patch = requests.patch(properly_url, data)
+#         return patch.json()
+#
+# HTTP = Httpmethods()
+# print(HTTP.xx())
