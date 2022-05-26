@@ -96,7 +96,7 @@ class Httpmethods(HTTPBaseMethods):
         status = r.status_code
         return status
 
-    # """PATCH METHODS"""
+    """PATCH METHODS"""
     def patch_response(self, api_key, data):
         properly_url = self.get_properly_url(api_key=api_key)
         r = requests.patch(properly_url, data)
@@ -116,7 +116,7 @@ class Httpmethods(HTTPBaseMethods):
             list_values.append(v)
         return list_values
 
-#     def xx(self):
+#     def example(self):
 #         data = {"name": "morpheus", "job": "zion resident"}
 #         properly_url = "https://reqres.in/api/users/2"
 #         patch = requests.patch(properly_url, data)

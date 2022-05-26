@@ -15,4 +15,6 @@ login_unsuccessful = "login"
 #PUT AND PATCH
 update = "users/2"
 patch = "users/2"
+#DELETE
+delete = "users/2"
 
